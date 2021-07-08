@@ -1,0 +1,10 @@
+C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\obj\Debug\FLowerShopUI.csproj.AssemblyReference.cache
+C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\obj\Debug\FLowerShopUI.Form1.resources
+C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\obj\Debug\FLowerShopUI.Properties.Resources.resources
+C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\obj\Debug\FLowerShopUI.csproj.GenerateResource.cache
+C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\obj\Debug\FLowerShopUI.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\bin\Debug\FLowerShopUI.exe.config
+C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\bin\Debug\FLowerShopUI.exe
+C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\bin\Debug\FLowerShopUI.pdb
+C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\obj\Debug\FLowerShopUI.exe
+C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\obj\Debug\FLowerShopUI.pdb

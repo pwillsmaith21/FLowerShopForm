@@ -20,10 +20,7 @@ namespace FLowerShop
             flowerList = listOfFlower.ToList();
 
         }
-        public Flower Retrieveflower()
-        {
-            throw new NotImplementedException();
-        }
+       
         public int ConvertToInt(String zone)
         {
             try
@@ -37,19 +34,20 @@ namespace FLowerShop
             }
         
         }
-        public void printListofItem()
+        public List<string> DisplayListOfFLower()
         {
+            List<string> list = new List<string>();
             for ( int i = 0 ,  y =1; i < flowerList.Count(); i++, y++)
             {
-                Console.WriteLine("FLower Location:" + y);
-                Console.WriteLine(  flowerList.ElementAt(i));
+                list.Add($"{y}: {flowerList.ElementAt(i).commonName} Price: ${flowerList.ElementAt(i).price}\n");
             }
-            //flowerList.ForEach(flower => Console.WriteLine(flower.ToString()));
+            return list; 
         }
         public Flower RetrieveFLower(int location)
+            
         {
-            location += 1;
-            if( location > 0 && location< flowerList.Count)
+            location -= 1;
+            if( location >= 0 && location< flowerList.Count)
             {
                 return (flowerList.ElementAt(location));
 

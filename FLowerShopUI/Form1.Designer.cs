@@ -30,8 +30,13 @@ namespace FLowerShopUI
         private void InitializeComponent()
         {
             this.flowerListLabel = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.totalLabel = new System.Windows.Forms.Label();
+            this.subtotalLabel = new System.Windows.Forms.Label();
+            this.subtotalBox = new System.Windows.Forms.TextBox();
+            this.totalBox = new System.Windows.Forms.TextBox();
+            this.checkoutButton = new System.Windows.Forms.Button();
+            this.flowerListBox = new System.Windows.Forms.ListBox();
+            this.cartListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // flowerListLabel
@@ -43,31 +48,83 @@ namespace FLowerShopUI
             this.flowerListLabel.TabIndex = 0;
             this.flowerListLabel.Text = "Flower List";
             // 
-            // listBox1
+            // totalLabel
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(12, 29);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(208, 292);
-            this.listBox1.TabIndex = 1;
+            this.totalLabel.AutoSize = true;
+            this.totalLabel.Location = new System.Drawing.Point(581, 256);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(40, 17);
+            this.totalLabel.TabIndex = 4;
+            this.totalLabel.Text = "Total";
             // 
-            // listView1
+            // subtotalLabel
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(584, 29);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(204, 309);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.subtotalLabel.AutoSize = true;
+            this.subtotalLabel.Location = new System.Drawing.Point(581, 224);
+            this.subtotalLabel.Name = "subtotalLabel";
+            this.subtotalLabel.Size = new System.Drawing.Size(60, 17);
+            this.subtotalLabel.TabIndex = 5;
+            this.subtotalLabel.Text = "Subtotal";
+            this.subtotalLabel.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // subtotalBox
+            // 
+            this.subtotalBox.Enabled = false;
+            this.subtotalBox.Location = new System.Drawing.Point(647, 224);
+            this.subtotalBox.Name = "subtotalBox";
+            this.subtotalBox.Size = new System.Drawing.Size(84, 22);
+            this.subtotalBox.TabIndex = 6;
+            // 
+            // totalBox
+            // 
+            this.totalBox.Enabled = false;
+            this.totalBox.Location = new System.Drawing.Point(647, 251);
+            this.totalBox.Name = "totalBox";
+            this.totalBox.Size = new System.Drawing.Size(84, 22);
+            this.totalBox.TabIndex = 7;
+            // 
+            // checkoutButton
+            // 
+            this.checkoutButton.Location = new System.Drawing.Point(615, 289);
+            this.checkoutButton.Name = "checkoutButton";
+            this.checkoutButton.Size = new System.Drawing.Size(147, 49);
+            this.checkoutButton.TabIndex = 8;
+            this.checkoutButton.Text = "Checkout";
+            this.checkoutButton.UseVisualStyleBackColor = true;
+            this.checkoutButton.Click += new System.EventHandler(this.checkoutButton_Click);
+            // 
+            // flowerListBox
+            // 
+            this.flowerListBox.FormattingEnabled = true;
+            this.flowerListBox.ItemHeight = 16;
+            this.flowerListBox.Location = new System.Drawing.Point(13, 31);
+            this.flowerListBox.Name = "flowerListBox";
+            this.flowerListBox.Size = new System.Drawing.Size(282, 292);
+            this.flowerListBox.TabIndex = 9;
+            this.flowerListBox.DoubleClick += new System.EventHandler(this.flowerListBox_DoubleClick);
+            // 
+            // cartListBox
+            // 
+            this.cartListBox.FormattingEnabled = true;
+            this.cartListBox.ItemHeight = 16;
+            this.cartListBox.Location = new System.Drawing.Point(547, 31);
+            this.cartListBox.Name = "cartListBox";
+            this.cartListBox.Size = new System.Drawing.Size(250, 164);
+            this.cartListBox.TabIndex = 10;
+            this.cartListBox.DoubleClick += new System.EventHandler(this.cartListBox_DoubleClick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.cartListBox);
+            this.Controls.Add(this.flowerListBox);
+            this.Controls.Add(this.checkoutButton);
+            this.Controls.Add(this.totalBox);
+            this.Controls.Add(this.subtotalBox);
+            this.Controls.Add(this.subtotalLabel);
+            this.Controls.Add(this.totalLabel);
             this.Controls.Add(this.flowerListLabel);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -79,8 +136,13 @@ namespace FLowerShopUI
         #endregion
 
         private System.Windows.Forms.Label flowerListLabel;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label totalLabel;
+        private System.Windows.Forms.Label subtotalLabel;
+        private System.Windows.Forms.TextBox subtotalBox;
+        private System.Windows.Forms.TextBox totalBox;
+        private System.Windows.Forms.Button checkoutButton;
+        private System.Windows.Forms.ListBox flowerListBox;
+        private System.Windows.Forms.ListBox cartListBox;
     }
 }
 

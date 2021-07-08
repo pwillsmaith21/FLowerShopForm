@@ -7,7 +7,7 @@ namespace FLowerShop
 {
     public class Flower : IComparable<Flower>
     {
-        protected string commonName { get; }
+        public string commonName { get; }
         protected string botanical { get; }
         protected int zone { get; }
         protected string light { get;}

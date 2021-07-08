@@ -6,11 +6,11 @@ namespace FLowerShop
 {
     public class Cart : FlowerCatalog
     {
-        public decimal total { get; set; }
+        private decimal total { get; set; }
         public int totalItem { get; set; }
-        public decimal tax { get; set; }
-        public const decimal taxPercentage = 0.0635M;
-        public decimal subtotal { get; set; }
+        private decimal tax { get; set; }
+        private const decimal taxPercentage = 0.0635M;
+        private decimal subtotal { get; set; }
         private List<Flower> ShoppingCart = new List<Flower>();
         private FlowerCatalog catalog;
         public Cart(FlowerCatalog catalog)
@@ -21,30 +21,39 @@ namespace FLowerShop
             this.tax = 0;
 
         }
-        public void CalculateSubtotal()
+        public void AddToSubtotal(decimal price)
         {
-            ShoppingCart.ForEach(item => this.subtotal += item.price);
-
+            this.subtotal += price;
         }
-        public void checkOut()
+        public void SubtracFromSubtotal(decimal price)
         {
-            CalculateSubtotal();
+            this.subtotal -= price;
+        }
+        private void calculateTotal()
+        {
             CalculateTax();
             this.total = this.subtotal + this.tax;
         }
-        public void  CalculateTax()
+        public decimal GetTotal()
+        {
+            calculateTotal();
+            return total;
+        }
+        public decimal GetSubtotal()
+        {
+            return subtotal;
+        }
+        private void  CalculateTax()
         {
             this.tax =  subtotal * taxPercentage;
 
         }
-        public void CalculateTotal()
+        public bool AddNewItemToCart(int flowerIndex)
         {
-
-        }
-        public bool AddNewItemToCart(Flower flower)
-        {
+            Flower flower = catalog.RetrieveFLower(flowerIndex);
             if (verifyItem(flower))
             {
+                AddToSubtotal(flower.price);
                 ShoppingCart.Add(flower);
                 totalItem += 1;
                 return true;
@@ -55,10 +64,12 @@ namespace FLowerShop
             }
           
         }
-        public bool removeItemFromCart(Flower flower)
+        public bool removeItemFromCart(int flowerIndex)
         {
-            if(verifyItem(flower))
+            Flower flower = catalog.RetrieveFLower(flowerIndex);
+            if (verifyItem(flower))
             {
+                SubtracFromSubtotal(flower.price);
                 ShoppingCart.Remove(flower);
                 totalItem -= 1;
 
