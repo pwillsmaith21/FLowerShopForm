@@ -1,5 +1,5 @@
 ﻿
-namespace FLowerShopUI
+namespace FlowerUI
 {
     partial class Form1
     {
@@ -29,7 +29,7 @@ namespace FLowerShopUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.flowerListLabel = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.totalLabel = new System.Windows.Forms.Label();
             this.subtotalLabel = new System.Windows.Forms.Label();
             this.subtotalBox = new System.Windows.Forms.TextBox();
@@ -39,18 +39,10 @@ namespace FLowerShopUI
             this.cartListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // flowerListLabel
-            // 
-            this.flowerListLabel.AutoSize = true;
-            this.flowerListLabel.Location = new System.Drawing.Point(12, 9);
-            this.flowerListLabel.Name = "flowerListLabel";
-            this.flowerListLabel.Size = new System.Drawing.Size(75, 17);
-            this.flowerListLabel.TabIndex = 0;
-            this.flowerListLabel.Text = "Flower List";
-            // 
             // totalLabel
             // 
             this.totalLabel.AutoSize = true;
+            this.totalLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
             this.totalLabel.Location = new System.Drawing.Point(581, 256);
             this.totalLabel.Name = "totalLabel";
             this.totalLabel.Size = new System.Drawing.Size(40, 17);
@@ -60,6 +52,7 @@ namespace FLowerShopUI
             // subtotalLabel
             // 
             this.subtotalLabel.AutoSize = true;
+            this.subtotalLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
             this.subtotalLabel.Location = new System.Drawing.Point(581, 224);
             this.subtotalLabel.Name = "subtotalLabel";
             this.subtotalLabel.Size = new System.Drawing.Size(60, 17);
@@ -85,7 +78,8 @@ namespace FLowerShopUI
             // 
             // checkoutButton
             // 
-            this.checkoutButton.Location = new System.Drawing.Point(615, 289);
+            this.checkoutButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
+            this.checkoutButton.Location = new System.Drawing.Point(610, 293);
             this.checkoutButton.Name = "checkoutButton";
             this.checkoutButton.Size = new System.Drawing.Size(147, 49);
             this.checkoutButton.TabIndex = 8;
@@ -95,6 +89,8 @@ namespace FLowerShopUI
             // 
             // flowerListBox
             // 
+            this.flowerListBox.BackColor = System.Drawing.Color.White;
+            this.flowerListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
             this.flowerListBox.FormattingEnabled = true;
             this.flowerListBox.ItemHeight = 16;
             this.flowerListBox.Location = new System.Drawing.Point(13, 31);
@@ -105,9 +101,10 @@ namespace FLowerShopUI
             // 
             // cartListBox
             // 
+            this.cartListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(36)))), ((int)(((byte)(0)))));
             this.cartListBox.FormattingEnabled = true;
             this.cartListBox.ItemHeight = 16;
-            this.cartListBox.Location = new System.Drawing.Point(547, 31);
+            this.cartListBox.Location = new System.Drawing.Point(550, 31);
             this.cartListBox.Name = "cartListBox";
             this.cartListBox.Size = new System.Drawing.Size(250, 164);
             this.cartListBox.TabIndex = 10;
@@ -117,6 +114,7 @@ namespace FLowerShopUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(110)))), ((int)(((byte)(233)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.cartListBox);
             this.Controls.Add(this.flowerListBox);
@@ -125,17 +123,16 @@ namespace FLowerShopUI
             this.Controls.Add(this.subtotalBox);
             this.Controls.Add(this.subtotalLabel);
             this.Controls.Add(this.totalLabel);
-            this.Controls.Add(this.flowerListLabel);
+            this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Flower Shop";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label flowerListLabel;
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.Label subtotalLabel;
         private System.Windows.Forms.TextBox subtotalBox;

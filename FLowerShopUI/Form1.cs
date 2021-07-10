@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using FLowerShop;
+using FlowerUI;
 
 
-namespace FLowerShopUI
+namespace FlowerUI
 {
     public partial class Form1 : Form
     {

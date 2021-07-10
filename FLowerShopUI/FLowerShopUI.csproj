@@ -49,7 +49,6 @@
     <Compile Include="FlowerSourceCode\Cart.cs" />
     <Compile Include="FlowerSourceCode\Flower.cs" />
     <Compile Include="FlowerSourceCode\FlowerCatalog.cs" />
-    <Compile Include="FlowerSourceCode\Program.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
