@@ -4,12 +4,14 @@ using System.Text;
 using System.Linq;
 using System.Xml.Linq;
 using System.Globalization;
-
+using System.Data.SqlClient;
+using Dapper;
+using System.Configuration;
 namespace FlowerUI
 {
     public class FlowerCatalog
     {
-        public  List<Flower> flowerList = new List<Flower>();
+        public List<Flower> flowerList = new List<Flower>();
        
         public void loadDataFromXml()
         {
@@ -65,5 +67,6 @@ namespace FlowerUI
 
             return decimal.Parse(trimPrice, NumberStyles.Currency);
         }
+      
     }
 }

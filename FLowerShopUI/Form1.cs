@@ -80,5 +80,20 @@ namespace FlowerUI
             SetTotal();
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (userIdBox.Text != null && userPinBox.Text != null)
+            {
+                string userId = userIdBox.Text;
+                int userPin = Int32.Parse(userPinBox.Text);
+                MessageBox.Show(checkoutCart.StoreCartData(userId, userPin));
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

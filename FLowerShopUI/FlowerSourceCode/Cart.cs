@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Text;
+using Dapper;
 
 namespace FlowerUI
 {
@@ -98,7 +101,39 @@ namespace FlowerUI
                 $"Total: {total}\n");
         }
 
+        public string StoreCartData(String userId, int pin)
+        {
+            using (var connection = new SqlConnection(Helper.CnnVal("testData")))
+            {
+                string sql = $" insert into flowershopcart values('{userId}', '{pin}','{subtotal}','{total}','{totalItem}','{userId}');";
+                //connection.Execute(sql);
+                sql = $"create table {userId}(id int, flowerName varchar(30), price Decimal(10,5));";
+                //connection.Execute(sql);
+                sql = $"insert into {userId}(id, flowerName, price) values(@id, @flowerName, @price);";
+                SqlCommand command = new SqlCommand(sql, connection);
+                int count = 1;
+                connection.Open();
+                foreach( Flower flower in ShoppingCart)
+                {
+                    command.Parameters.Add("@id", SqlDbType.Int).Value = count;
+                    command.Parameters.Add("@flowerName", SqlDbType.VarChar).Value = flower.commonName;
+                    command.Parameters.Add("@price", SqlDbType.Decimal).Value = flower.price;
+                    command.ExecuteNonQuery();
+                    command.Parameters.Clear();
+                    count++;
+                }
+                connection.Close();
+                return "Cart save succesfully";
+            }
+            return "wasnt save successfully";
+        }
+        //public String LoadDatafromDataBase(String userId, int pin)
+        //{
+        //    using (var connection = new SqlConnection(Helper.CnnVal("testData")))
+        //    {
 
+        //    }
+        //}
 
     }
 }

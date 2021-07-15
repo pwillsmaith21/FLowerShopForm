@@ -11,4 +11,14 @@ add flower to checkout by click✅
 calculate total each time flower is added 
 remove flowe from checkout by click✅
 calculate total each time flower is remove from cart
+  
+  Part 2:
+  add the option of loading cart from database base on name and password
+  new form for choosing 
+  button to start new 
+  button and function to load data
+	create new data table to save cart
+	create data base to save flower
+
+  button and function to save data;
 
