@@ -106,9 +106,9 @@ namespace FlowerUI
             using (var connection = new SqlConnection(Helper.CnnVal("testData")))
             {
                 string sql = $" insert into flowershopcart values('{userId}', '{pin}','{subtotal}','{total}','{totalItem}','{userId}');";
-                //connection.Execute(sql);
+                connection.Execute(sql);
                 sql = $"create table {userId}(id int, flowerName varchar(30), price Decimal(10,5));";
-                //connection.Execute(sql);
+                connection.Execute(sql);
                 sql = $"insert into {userId}(id, flowerName, price) values(@id, @flowerName, @price);";
                 SqlCommand command = new SqlCommand(sql, connection);
                 int count = 1;
@@ -127,13 +127,35 @@ namespace FlowerUI
             }
             return "wasnt save successfully";
         }
-        //public String LoadDatafromDataBase(String userId, int pin)
-        //{
-        //    using (var connection = new SqlConnection(Helper.CnnVal("testData")))
-        //    {
+        public bool LoadDatafromDataBase(String userId, int pin)
+        {
+            using (var connection = new SqlConnection(Helper.CnnVal("testData")))
+            {
+                string sql = $"select * from flowershopcart;";
+                IDataReader cartDatareader = connection.ExecuteReader(sql);
+                string flowerShopDatabaseName = string.Empty;
+                while (cartDatareader.Read()) {
+                    subtotal = Decimal.Parse(cartDatareader[2].ToString());
+                    total = Decimal.Parse(cartDatareader[3].ToString());
+                    totalItem = Int32.Parse(cartDatareader[4].ToString());
+                    flowerShopDatabaseName = cartDatareader[5].ToString();
+                }
+                cartDatareader.Close();
+                sql = $" select * from {flowerShopDatabaseName};";
+                var flowerListFromData = connection.Query(sql).AsList();
+                foreach( var f in flowerListFromData)
+                {
+                    Console.WriteLine(f);
+                }
+                return true;
+            }
+            return false;
 
-        //    }
-        //}
+        }
+        private void AddDataToCart()
+        {
+
+        }
 
     }
 }

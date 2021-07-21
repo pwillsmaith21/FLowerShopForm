@@ -19,3 +19,4 @@ C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\bin\Debug\System.Security.Acc
 C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\bin\Debug\System.Security.Permissions.xml
 C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\bin\Debug\System.Security.Principal.Windows.xml
 C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\obj\Debug\FLowerShopUI.csproj.CopyComplete
+C:\Users\HP\source\repos\FLowerShopUI\FLowerShopUI\obj\Debug\FlowerUI.InitialScreen.resources

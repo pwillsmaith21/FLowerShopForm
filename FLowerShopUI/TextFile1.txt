@@ -16,9 +16,11 @@ calculate total each time flower is remove from cart
   add the option of loading cart from database base on name and password
   new form for choosing 
   button to start new 
-  button and function to load data
-	create new data table to save cart
-	create data base to save flower
+  button to load data
+  function to load data
+  function to delete data after loading;
+	create new data table to save cart✅
+	create data base to save flower✅
 
-  button and function to save data;
+  button and function to save data;✅
 
