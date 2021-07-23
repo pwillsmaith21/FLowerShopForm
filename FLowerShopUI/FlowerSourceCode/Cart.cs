@@ -14,7 +14,7 @@ namespace FlowerUI
         private decimal tax { get; set; }
         private const decimal taxPercentage = 0.0635M;
         private decimal subtotal { get; set; }
-        private List<Flower> ShoppingCart = new List<Flower>();
+        public List<Flower> ShoppingCart = new List<Flower>();
         private FlowerCatalog catalog;
         public Cart(FlowerCatalog catalog)
         {
@@ -56,7 +56,9 @@ namespace FlowerUI
             Flower flower = catalog.RetrieveFLower(flowerIndex);
             if (verifyItem(flower))
             {
+
                 AddToSubtotal(flower.price);
+                flower.index = flowerIndex;
                 ShoppingCart.Add(flower);
                 totalItem += 1;
                 return true;
@@ -105,22 +107,19 @@ namespace FlowerUI
         {
             using (var connection = new SqlConnection(Helper.CnnVal("testData")))
             {
-                string sql = $" insert into flowershopcart values('{userId}', '{pin}','{subtotal}','{total}','{totalItem}','{userId}');";
+                string sql = $" insert into flowershopcart values('{userId}', '{pin}','{subtotal}','{total}','{totalItem}');";
                 connection.Execute(sql);
-                sql = $"create table {userId}(id int, flowerName varchar(30), price Decimal(10,5));";
-                connection.Execute(sql);
-                sql = $"insert into {userId}(id, flowerName, price) values(@id, @flowerName, @price);";
+                sql = $"insert into flowerDataBase(CustomerUserID, commonName, price, location) values(@CustomerUserID, @commonName, @price, @location);";
                 SqlCommand command = new SqlCommand(sql, connection);
-                int count = 1;
                 connection.Open();
                 foreach( Flower flower in ShoppingCart)
                 {
-                    command.Parameters.Add("@id", SqlDbType.Int).Value = count;
-                    command.Parameters.Add("@flowerName", SqlDbType.VarChar).Value = flower.commonName;
+                    command.Parameters.Add("@CustomerUserID", SqlDbType.VarChar).Value = userId;
+                    command.Parameters.Add("@commonName", SqlDbType.VarChar).Value = flower.commonName;
                     command.Parameters.Add("@price", SqlDbType.Decimal).Value = flower.price;
+                    command.Parameters.Add("@location", SqlDbType.Int).Value = flower.index;
                     command.ExecuteNonQuery();
                     command.Parameters.Clear();
-                    count++;
                 }
                 connection.Close();
                 return "Cart save succesfully";
@@ -129,32 +128,35 @@ namespace FlowerUI
         }
         public bool LoadDatafromDataBase(String userId, int pin)
         {
+            IEnumerable<dynamic> flowerListFromData = null;
             using (var connection = new SqlConnection(Helper.CnnVal("testData")))
             {
                 string sql = $"select * from flowershopcart;";
                 IDataReader cartDatareader = connection.ExecuteReader(sql);
-                string flowerShopDatabaseName = string.Empty;
                 while (cartDatareader.Read()) {
                     subtotal = Decimal.Parse(cartDatareader[2].ToString());
                     total = Decimal.Parse(cartDatareader[3].ToString());
                     totalItem = Int32.Parse(cartDatareader[4].ToString());
-                    flowerShopDatabaseName = cartDatareader[5].ToString();
                 }
+                cartDatareader.Dispose();
+                sql = $" select * from flowerDataBase where CustomerUserID = '{userId}' ;";
+                cartDatareader = connection.ExecuteReader(sql);
+                AddFlowerToCheckout(cartDatareader);
                 cartDatareader.Close();
-                sql = $" select * from {flowerShopDatabaseName};";
-                var flowerListFromData = connection.Query(sql).AsList();
-                foreach( var f in flowerListFromData)
-                {
-                    Console.WriteLine(f);
-                }
                 return true;
             }
-            return false;
+            return false ;
 
         }
-        private void AddDataToCart()
+        public void AddFlowerToCheckout(IDataReader cartDataReader)
         {
-
+          while(cartDataReader.Read())
+            {
+                int location = Int32.Parse(cartDataReader[3].ToString());
+                Flower retrieveFlower = catalog.RetrieveFLower(location);
+                retrieveFlower.index = location;
+                ShoppingCart.Add(retrieveFlower);
+            }
         }
 
     }

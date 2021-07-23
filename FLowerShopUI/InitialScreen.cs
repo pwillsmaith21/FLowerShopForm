@@ -30,6 +30,11 @@ namespace FlowerUI
                     string userId = userIdTextBox.Text;
                     int pin = Int32.Parse(pinTextBox.Text);
                     MessageBox.Show(checkoutCart.LoadDatafromDataBase(userId, pin).ToString());
+                    Hide();
+                    Form1 form = new Form1();
+                    form.Show();
+                    form.loadCart(checkoutCart);
+                    
                 }
                 catch (System.FormatException error)
                 {

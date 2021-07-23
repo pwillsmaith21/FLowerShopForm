@@ -11,6 +11,10 @@ namespace FlowerUI
 {
     public class FlowerCatalog
     {
+        public FlowerCatalog()
+        {
+            loadDataFromXml();
+        }
         public List<Flower> flowerList = new List<Flower>();
        
         public void loadDataFromXml()

@@ -23,4 +23,5 @@ calculate total each time flower is remove from cart
 	create data base to save flower✅
 
   button and function to save data;✅
+	create database for flower and use customer id as primary key to locate flower.
 

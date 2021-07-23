@@ -14,6 +14,7 @@ namespace FlowerUI
         public decimal price { get; set; }
         public bool availabilty { get; set; }
         public int quantity { get; set; }
+        public int index; 
         public Flower(string commonName, string botanical, int zone, string light, decimal price)
         {
             this.commonName = commonName;
@@ -23,6 +24,7 @@ namespace FlowerUI
             this.price = price;
             this.availabilty = true;
             this.quantity = 50;
+            this.index = -1;
 
         }
         public override string ToString()

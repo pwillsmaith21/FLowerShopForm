@@ -20,13 +20,13 @@ namespace FlowerUI
         {
             InitializeComponent();
             InitializedStore();
+            checkoutCart = new Cart(catalog);
             SetSubTotal();
         }
         private void InitializedStore()
         {
             catalog = new FlowerCatalog();
-            catalog.loadDataFromXml();
-            checkoutCart = new Cart(catalog);
+            
             addFLowerToListBox();
             
 
@@ -66,6 +66,16 @@ namespace FlowerUI
             AddItemToCart(flowerListBox.SelectedItem.ToString());
             SetSubTotal();
 
+        }
+        public void loadCart(Cart cart)
+        {
+            List<Flower> flowerList = cart.ShoppingCart;
+            foreach (Flower flower in flowerList)
+            {
+                cartListBox.Items.Add($"{flower.index}: {flower.commonName}: {flower.price}");
+            }
+            SetSubTotal();
+            SetTotal();
         }
         private void cartListBox_DoubleClick(object sender, EventArgs e)
         {
